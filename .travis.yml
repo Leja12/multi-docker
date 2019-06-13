@@ -1,4 +1,5 @@
 sudo: required
+
 services:
   - docker
 
@@ -13,10 +14,10 @@ after_success:
   - docker build -t lejarokos/multi-nginx ./nginx
   - docker build -t lejarokos/multi-server ./server
   - docker build -t lejarokos/multi-worker ./worker
-# Log in to the docker CLI
-- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-# Take those images and push them to docker hub
-- docker push lejarokos/multi-client
-- docker push lejarokos/multi-nginx
-- docker push lejarokos/multi-server
-- docker push lejarokos/multi-worker
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push lejarokos/multi-client
+  - docker push lejarokos/multi-nginx
+  - docker push lejarokos/multi-server
+  - docker push lejarokos/multi-worker
